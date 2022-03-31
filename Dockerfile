@@ -24,11 +24,11 @@ RUN ln -s /liquibase/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh \
 USER liquibase
 
 # Latest Liquibase Release Version
-ARG LIQUIBASE_VERSION=4.8.0
+ARG LIQUIBASE_VERSION=4.9.1
 ARG LPM_VERSION=0.1.3
 
 # Download, verify, extract
-ARG LB_SHA256=7462b6e92f7077e1858865c403d52f0dce1bd66d03b1fae907815c10825feb33
+ARG LB_SHA256=b7d2afbd0b6a3443f3eeb8050785eeabee3a76a12473014dc2788dce56b23a8d
 RUN set -x \
   && wget -O liquibase-${LIQUIBASE_VERSION}.tar.gz "https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz" \
   && echo "$LB_SHA256  liquibase-${LIQUIBASE_VERSION}.tar.gz" | sha256sum -c - \
@@ -44,7 +44,7 @@ RUN export LIQUIBASE_HOME=/liquibase
 
 # Install Drivers
 RUN lpm update
-RUN lpm add snowflake --global
+RUN lpm add snowflake liquibase-snowflake --global
 RUN ls -alh /liquibase/lib
 
 COPY --chown=liquibase:liquibase docker-entrypoint.sh /liquibase/
