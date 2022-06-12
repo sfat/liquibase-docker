@@ -20,21 +20,26 @@ The latest tag will be kept up to date with the most advanced Liquibase release.
 
 These tags are kept up to date with the most recent patch release of each X.Y stream
 
+- `4.11`
+- `4.10`
 - `4.9`
 - `4.8`
 - `4.7`
 - `4.6`
 - `4.5`
--	`4.4`
--	`4.3`
--	`4.2`
--	`4.1`
--	`3.10`
+- `4.4`
+- `4.3`
+- `4.2`
+- `4.1`
+- `3.10`
 
 #### Specific Releases
 
 Each specific release has an associated tag
 
+- `4.11.0`
+- `4.10.0`
+- `4.9.1`
 - `4.9.0`
 - `4.8.0`
 - `4.7.1`
@@ -42,21 +47,21 @@ Each specific release has an associated tag
 - `4.6.2`
 - `4.6.1`
 - `4.5.0`
--	`4.4.3`
--	`4.4.2`
--	`4.4.1`
--	`4.4.0`
--	`4.3.5`
--	`4.3.4`
--	`4.3.3`
--	`4.3.2`
--	`4.3.1`
--	`4.3.0`
--	`4.2.2`
--	`4.2.0`
--	`4.1.1`
--	`4.1.0`
--	`3.10.3`
+- `4.4.3`
+- `4.4.2`
+- `4.4.1`
+- `4.4.0`
+- `4.3.5`
+- `4.3.4`
+- `4.3.3`
+- `4.3.2`
+- `4.3.1`
+- `4.3.0`
+- `4.2.2`
+- `4.2.0`
+- `4.1.1`
+- `4.1.0`
+- `3.10.3`
 
 ## Changelog Files
 
@@ -66,9 +71,9 @@ The /liquibase/changelog volume can also be used for commands that write output,
 
 #### Example
 
-If you have a local `c:\projects\my-project\src\main\resources\com\example\changelogs\root.changelog.xml` file, you would run `docker run --rm -v c:\projects\my-project\src\main\resources:/liquibase/changelog liquibase/liquibase --changeLogFile=com/example/changelogs/root.changelog.xml update`
+If you have a local `c:\projects\my-project\src\main\resources\com\example\changelogs\root.changelog.xml` file, you would run `docker run --rm -v c:\projects\my-project\src\main\resources:/liquibase/changelog liquibase/liquibase --changeLogFile=changelog/com/example/changelogs/root.changelog.xml update`
 
-To generate a new changelog file at this location, run `docker run --rm -v c:\projects\my-project\src\main\resources:/liquibase/changelog liquibase/liquibase --changeLogFile=com/example/changelogs/root.changelog.xml generateChangeLog`
+To generate a new changelog file at this location, run `docker run --rm -v c:\projects\my-project\src\main\resources:/liquibase/changelog liquibase/liquibase --changeLogFile=changelog/com/example/changelogs/root.changelog.xml generateChangeLog`
 
 ## Configuration File
 
