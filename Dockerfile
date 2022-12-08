@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-focal
+FROM eclipse-temurin:17-jre-jammy
 
 # Install GNUPG for package vefification and WGET for file download
 RUN apt-get update \
@@ -25,13 +25,13 @@ RUN ln -s /liquibase/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh \
 USER liquibase
 
 # Latest Liquibase Release Version
-ARG LIQUIBASE_VERSION=4.16.1
-ARG LPM_VERSION=0.1.7
+ARG LIQUIBASE_VERSION=4.18.0
+ARG LPM_VERSION=0.2.0
 
 # Download, verify, extract
-ARG LB_SHA256=2da0022c3315d9c59c4cb1c3b50b3bad2f5a944d74973fb9f4b32037e5403019
+ARG LB_SHA256=6113f652d06a71556d6ed4a8bb371ab2d843010cb0365379e83df8b4564a6a76
 RUN set -x \
-  && wget -O liquibase-${LIQUIBASE_VERSION}.tar.gz "https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz" \
+  && wget -q -O liquibase-${LIQUIBASE_VERSION}.tar.gz "https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz" \
   && echo "$LB_SHA256  liquibase-${LIQUIBASE_VERSION}.tar.gz" | sha256sum -c - \
   && tar -xzf liquibase-${LIQUIBASE_VERSION}.tar.gz \
   && rm liquibase-${LIQUIBASE_VERSION}.tar.gz
