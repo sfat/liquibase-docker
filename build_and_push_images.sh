@@ -15,7 +15,6 @@ echo "Building and Pushing Liquibase Docker images for version $version"
 
 echo "Building Docker Buildx Starter"
 export DOCKER_CLI_EXPERIMENTAL=enabled
-docker buildx create --use
 
 echo "Building and Pushing images"
 
