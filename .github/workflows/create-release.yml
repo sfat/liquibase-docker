@@ -68,15 +68,15 @@ jobs:
           sed -i 's/^ARG LIQUIBASE_VERSION=.*/ARG LIQUIBASE_VERSION='"${{ needs.setup.outputs.liquibaseVersion }}"'/' ${{ github.workspace }}/Dockerfile
           sed -i 's/^ARG LB_SHA256=.*/ARG LB_SHA256='"$LIQUIBASE_SHA"'/' ${{ github.workspace }}/Dockerfile
 
-          git add Dockerfile
-          if git diff-index --cached --quiet HEAD --
-          then
-            echo "Nothing new to commit"
-          else
-            git commit -m "Liquibase Version Bumped to ${{ needs.setup.outputs.extensionVersion }}"
-          fi
-          git tag -a -m "Version Bumped to ${{ needs.setup.outputs.extensionVersion }}" v${{ needs.setup.outputs.extensionVersion }}
-          git push "https://liquibot:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${{ github.ref }} --follow-tags --tags
+#          git add Dockerfile
+#          if git diff-index --cached --quiet HEAD --
+#          then
+#            echo "Nothing new to commit"
+#          else
+#            git commit -m "Liquibase Version Bumped to ${{ needs.setup.outputs.extensionVersion }}"
+#          fi
+#          git tag -a -m "Version Bumped to ${{ needs.setup.outputs.extensionVersion }}" v${{ needs.setup.outputs.extensionVersion }}
+#          git push "https://liquibot:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:${{ github.ref }} --follow-tags --tags
 
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
